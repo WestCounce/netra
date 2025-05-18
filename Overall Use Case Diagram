@@ -1,0 +1,44 @@
+flowchart TD
+  DataScientist([Data Scientist])
+  MLEngineer([ML Engineer])
+  DataEngineer([Data Engineer])
+  SystemEngineer([System Engineer])
+  SME([Subject Matter Expert])
+  EndUser([End User])
+  Testor([Testor])
+
+  UseCase1((Ingest Data))
+  UseCase2((Validate Data))
+  UseCase3((Preprocess Data))
+  UseCase4((Train Model))
+  UseCase5((Evaluate Model))
+  UseCase6((Deploy Model))
+  UseCase7((Monitor Model))
+  UseCase8((Generate Predictions))
+  UseCase9((Test Model & Pipeline))
+  UseCase10((Provide Domain Knowledge))
+
+  DataScientist -- Ingest Data --> UseCase1
+  DataScientist -- Validate Data --> UseCase2
+  DataScientist -- Preprocess Data --> UseCase3
+  DataScientist -- Train Model --> UseCase4
+  DataScientist -- Evaluate Model --> UseCase5
+
+  MLEngineer -- Deploy Model --> UseCase6
+  MLEngineer -- Monitor Model --> UseCase7
+
+  DataEngineer -- Ingest Data --> UseCase1
+  DataEngineer -- Preprocess Data --> UseCase3
+
+  SystemEngineer -- Deploy Model --> UseCase6
+  SystemEngineer -- Monitor Model --> UseCase7
+
+  SME -- Provide Domain Knowledge --> UseCase10
+  DataScientist -- Consult Domain Knowledge --> UseCase10
+
+  EndUser -- Generate Predictions --> UseCase8
+  UseCase6 -- Generate Predictions --> UseCase8
+
+  Testor -- Test Model & Pipeline --> UseCase9
+  UseCase4 -- Test Model & Pipeline --> UseCase9
+  UseCase6 -- Test Model & Pipeline --> UseCase9
